@@ -3,6 +3,7 @@ import socket
 from django.shortcuts import render
 
 from .models import *
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
@@ -65,5 +66,15 @@ def Contact(request):
 
 
 def load_more_posts(request):
-    articles = Article.objects.order_by('-times_clicked')
+    articles_list = Article.objects.order_by('-times_clicked')
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(articles_list, 3)
+    try:
+        articles = paginator.page(page)
+    except PageNotAnInteger:
+        articles = paginator.page(1)
+    except EmptyPage:
+        articles = paginator.page(paginator.num_pages)
+
     return render(request, 'store/more_posts.html', {"articles": articles})
