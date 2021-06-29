@@ -26,7 +26,7 @@ def single_post(request, article_name):
 
     name = Article.objects.filter(link_identifier=article_name).values_list('author', flat=True).last()
     real_name_hehe = Author.objects.filter(pk=name).values_list('name', flat=True).last()
-    background_image = content2.image2URL
+    background_image = content2.bg_image
 
     cat_pk = Article.objects.filter(link_identifier=article_name).values_list('category', flat=True).last()
     cat = Categories.objects.filter(pk=cat_pk).values_list('category', flat=True).last()
@@ -34,8 +34,13 @@ def single_post(request, article_name):
     similar_articles = Article.objects.filter(category=cat_pk)
     print(similar_articles)
 
+    image1 = content2.imageURL
+    image2 = content2.image2URL
+    image3 = content2.image3URL
+
     times_clicked = Article.objects.filter(link_identifier=article_name).values_list('times_clicked', flat=True).last()
     times_clicked = times_clicked + 1
+
 
     art = Article.objects.get(link_identifier=article_name)
     art.times_clicked = times_clicked
@@ -52,7 +57,10 @@ def single_post(request, article_name):
                'name': real_name_hehe,
                'background_image': background_image,
                'category': cat,
-               'similar_articles': similar_articles
+               'similar_articles': similar_articles,
+               'image1': image1,
+               'image2':image2,
+               'image3':image3
                }
     return render(request, 'store/post.html', context)
 
@@ -78,3 +86,7 @@ def load_more_posts(request):
         articles = paginator.page(paginator.num_pages)
 
     return render(request, 'store/more_posts.html', {"articles": articles})
+
+
+def privacy_policy(request):
+    return render(request, 'store/PrivacyPolicy.html')

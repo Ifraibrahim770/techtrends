@@ -30,6 +30,7 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'stalls' %}">Home</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'about' %}">About</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'contact' %}">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'privacy' %}">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -76,7 +77,7 @@
 
                     <nav aria-label="...">
                         {% if articles.has_other_pages %}
-                          <ul class="pagination justify-content-center">
+                          <ul class="pagination justify-content-center post-subtitle">
                               {% if articles.has_previous %}
                                     <li class="page-item">
                                       <a class="page-link" href="?page={{ articles.previous_page_number }}" tabindex="-1">Previous</a>

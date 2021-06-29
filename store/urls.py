@@ -8,5 +8,6 @@ urlpatterns = [
     path('about', views.About, name='about'),
     path('contact', views.Contact, name='contact'),
     path('morePosts', views.load_more_posts, name='morePosts'),
+    path('privacy', views.privacy_policy, name='privacy'),
 
 ]

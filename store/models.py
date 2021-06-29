@@ -34,25 +34,26 @@ class Article(models.Model):
 
 
 class Content(models.Model):
-    title1 = models.TextField(max_length=2000, null=True)
-    para1_1 = models.TextField(max_length=2000, null=True)
-    para1_2 = models.TextField(max_length=2000, null=True)
-    para1_3 = models.TextField(max_length=2000, null=True)
-    para1_4 = models.TextField(max_length=2000, null=True)
+    background_image = models.ImageField(blank=True, null=True)
+    title1 = models.TextField(max_length=2000, null=True,blank=True)
+    para1_1 = models.TextField(max_length=2000, null=True,blank=True)
+    para1_2 = models.TextField(max_length=2000, null=True,blank=True)
+    para1_3 = models.TextField(max_length=2000, null=True,blank=True)
+    para1_4 = models.TextField(max_length=2000, null=True,blank=True)
     image1 = models.ImageField(blank=True, null=True)
 
-    title2 = models.TextField(max_length=2000, null=True)
-    para2_1 = models.TextField(max_length=2000, null=True)
-    para2_2 = models.TextField(max_length=2000, null=True)
-    para2_3 = models.TextField(max_length=2000, null=True)
-    para2_4 = models.TextField(max_length=2000, null=True)
+    title2 = models.TextField(max_length=2000, null=True,blank=True)
+    para2_1 = models.TextField(max_length=2000, null=True,blank=True)
+    para2_2 = models.TextField(max_length=2000, null=True,blank=True)
+    para2_3 = models.TextField(max_length=2000, null=True,blank=True)
+    para2_4 = models.TextField(max_length=2000, null=True,blank=True)
     image2 = models.ImageField(blank=True, null=True)
 
-    title3 = models.TextField(max_length=2000, null=True)
-    para3_1 = models.TextField(max_length=2000, null=True)
-    para3_2 = models.TextField(max_length=2000, null=True)
-    para3_3 = models.TextField(max_length=2000, null=True)
-    para3_4 = models.TextField(max_length=2000, null=True)
+    title3 = models.TextField(max_length=2000, null=True,blank=True)
+    para3_1 = models.TextField(max_length=2000, null=True,blank=True)
+    para3_2 = models.TextField(max_length=2000, null=True,blank=True)
+    para3_3 = models.TextField(max_length=2000, null=True,blank=True)
+    para3_4 = models.TextField(max_length=2000, null=True,blank=True)
     image3 = models.ImageField(blank=True, null=True)
 
     article = models.ForeignKey(Article, on_delete=models.SET_NULL, null=True)
@@ -81,6 +82,13 @@ class Content(models.Model):
         try:
             url = self.image3.url
 
+        except:
+            url = ''
+        return url
+
+    def bg_image(self):
+        try:
+            url = self.background_image.url
         except:
             url = ''
         return url
