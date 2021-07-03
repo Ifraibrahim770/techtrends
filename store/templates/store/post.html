@@ -16,6 +16,8 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <meta property="og:title" content="{{article_name}}">
+        <meta property="og:image" content="{{background_image}}">
     </head>
     <body>
         <!-- Navigation-->
@@ -58,11 +60,7 @@
          <div class="col-12">
                 <!-- Main Content -->
                 <main class="row">
-
-
-
                     <!-- Slider -->
-
                          <div class="col-lg-2 row">
                             <div class="bg-white  col-12">
 
@@ -71,32 +69,18 @@
                         </div>
                         <div class="col-lg-8">
                              <article class="mb-5">
-                                 {% for content in content %}
+
             <div class="container px-4 px-lg-12">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-12 col-lg-10 col-xl-10">
-                        <h2 class="section-heading"style="font-size: 1.7rem;">{{content.title1}}</h2>
-                        <p>{{content.para1_1}}</p>
-                        <p>{{content.para1_2}}</p>
-                        <p>{{content.para1_3}}</p>
-                        <p>{{content.para1_4}}</p>
-                        <a href="#!"><img class="img-fluid" style="max-width: 70%; display: block; margin-left: auto; margin-right: auto;" src="{{image1}}" alt="..." /></a>
+                        {% for content in content %}
+                        <h2 class="section-heading"style="font-size: 1.7rem;">{{content.title|default_if_none:"" }}</h2>
+                        <p>{{content.paragraph|default_if_none:"" }}</p>
+                        {% if content.image1 %}
+                        <a href="#!"><img class="img-fluid" style="max-width: 50%; display: block; margin-left: auto; margin-right: auto;" src="{{content.imageURL}}" alt="..." /></a>
                         <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
-                        <h2 class="section-heading">{{content.title2}}</h2>
-                        <p>{{content.para2_1}}</p>
-                        <p>{{content.para2_2}}</p>
-                        <p>{{content.para2_3}}</p>
-                        <p>{{content.para2_4}}</p>
-                        <a href="#!"><img class="img-fluid" src="{{image2}}" alt="..." /></a>
-                        <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
-                        <h2 class="section-heading">{{content.title3}}</h2>
-                        <p>{{content.para3_1}}</p>
-                        <p>{{content.para3_2}}</p>
-                        <p>{{content.para3_3}}</p>
-                        <p>{{content.para3_4}}</p>
-                        <a href="#!"><img class="img-fluid" src="{{image3}}" style="max-width: 50%; display: block; margin-left: auto; margin-right: auto;""alt="..." /></a>
-                        <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
-
+                         {% endif %}
+                        {% endfor %}
                         <p>
                             Placeholder text by
                             <a href="http://spaceipsum.com/">Space Ipsum</a>
@@ -106,7 +90,7 @@
                     </div>
                 </div>
             </div>
-                                 {% endfor %}
+
         </article>
                             <hr class="my-4" />
                             	<div class="container px-4 px-lg-5">
@@ -115,7 +99,7 @@
                     <!-- Post preview-->
                     {% for similar_article in similar_articles %}
                     <div class="post-preview">
-                        <a href="post.html">
+                         <a href="{{similar_article.link_identifier}}">
                             <h2 class="post-title">{{similar_article.title}}</h2>
                             <h3 class="post-subtitle">{{similar_article.sub_title}}</h3>
                         </a>

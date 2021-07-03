@@ -28,34 +28,25 @@ class Article(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     times_clicked = models.IntegerField(default=0)
     verified = models.BooleanField(default=False, blank=False, null=True)
+    background_image = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return str(self.title)
 
+    @property
+    def imageURL(self):
+        try:
+            url = self.background_image.url
+
+        except:
+            url = ''
+        return url
+
 
 class Content(models.Model):
-    background_image = models.ImageField(blank=True, null=True)
-    title1 = models.TextField(max_length=2000, null=True,blank=True)
-    para1_1 = models.TextField(max_length=2000, null=True,blank=True)
-    para1_2 = models.TextField(max_length=2000, null=True,blank=True)
-    para1_3 = models.TextField(max_length=2000, null=True,blank=True)
-    para1_4 = models.TextField(max_length=2000, null=True,blank=True)
+    title = models.CharField(max_length=2000,blank=True, null=True)
+    paragraph = models.TextField(max_length=2000, null=True, blank=True)
     image1 = models.ImageField(blank=True, null=True)
-
-    title2 = models.TextField(max_length=2000, null=True,blank=True)
-    para2_1 = models.TextField(max_length=2000, null=True,blank=True)
-    para2_2 = models.TextField(max_length=2000, null=True,blank=True)
-    para2_3 = models.TextField(max_length=2000, null=True,blank=True)
-    para2_4 = models.TextField(max_length=2000, null=True,blank=True)
-    image2 = models.ImageField(blank=True, null=True)
-
-    title3 = models.TextField(max_length=2000, null=True,blank=True)
-    para3_1 = models.TextField(max_length=2000, null=True,blank=True)
-    para3_2 = models.TextField(max_length=2000, null=True,blank=True)
-    para3_3 = models.TextField(max_length=2000, null=True,blank=True)
-    para3_4 = models.TextField(max_length=2000, null=True,blank=True)
-    image3 = models.ImageField(blank=True, null=True)
-
     article = models.ForeignKey(Article, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
@@ -66,29 +57,6 @@ class Content(models.Model):
         try:
             url = self.image1.url
 
-        except:
-            url = ''
-        return url
-
-    def image2URL(self):
-        try:
-            url = self.image2.url
-
-        except:
-            url = ''
-        return url
-
-    def image3URL(self):
-        try:
-            url = self.image3.url
-
-        except:
-            url = ''
-        return url
-
-    def bg_image(self):
-        try:
-            url = self.background_image.url
         except:
             url = ''
         return url
