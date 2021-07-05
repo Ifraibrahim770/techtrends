@@ -18,7 +18,7 @@ def Stalls(request):
 def single_post(request, article_name):
     print(article_name)
     article_obj = Article.objects.get(link_identifier=article_name)
-    content = Content.objects.filter(article=article_obj)
+    content = Content.objects.filter(article=article_obj).order_by('id')
     subtitle = Article.objects.filter(link_identifier=article_name).values_list('sub_title', flat=True).last()
     date = Article.objects.filter(link_identifier=article_name).values_list('date_added', flat=True).last()
 
