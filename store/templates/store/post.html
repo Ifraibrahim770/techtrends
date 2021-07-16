@@ -78,7 +78,7 @@
                         <p>{{content.paragraph|default_if_none:"" }}</p>
                         {% if content.image1 %}
                         <a href="#!"><img class="img-fluid" style="max-width: 50%; display: block; margin-left: auto; margin-right: auto;" src="{{content.imageURL}}" alt="..." /></a>
-                        <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
+                        <span class="caption text-muted">{{content.image_caption|default_if_none:"" }}</span>
                          {% endif %}
                         {% endfor %}
 

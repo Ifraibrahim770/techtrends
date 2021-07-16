@@ -47,6 +47,7 @@ class Content(models.Model):
     title = models.CharField(max_length=2000,blank=True, null=True)
     paragraph = models.TextField(max_length=2000, null=True, blank=True)
     image1 = models.ImageField(blank=True, null=True)
+    image_caption = models.CharField(max_length=2000, blank=True, null=True)
     article = models.ForeignKey(Article, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
