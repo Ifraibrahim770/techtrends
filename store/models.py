@@ -28,7 +28,7 @@ class Article(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     times_clicked = models.IntegerField(default=0)
     verified = models.BooleanField(default=False, blank=False, null=True)
-    background_image = models.ImageField(blank=True, null=True)
+    background_image = models.CharField(max_length=2000, blank=True, null=True)
 
     def __str__(self):
         return str(self.title)
@@ -46,18 +46,9 @@ class Article(models.Model):
 class Content(models.Model):
     title = models.CharField(max_length=2000,blank=True, null=True)
     paragraph = models.TextField(max_length=2000, null=True, blank=True)
-    image1 = models.ImageField(blank=True, null=True)
+    image1 = models.CharField(max_length=2000, blank=True, null=True)
     image_caption = models.CharField(max_length=2000, blank=True, null=True)
     article = models.ForeignKey(Article, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return str(self.article)
-
-    @property
-    def imageURL(self):
-        try:
-            url = self.image1.url
-
-        except:
-            url = ''
-        return url

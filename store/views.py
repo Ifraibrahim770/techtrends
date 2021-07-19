@@ -26,7 +26,7 @@ def single_post(request, article_name):
 
     name = Article.objects.filter(link_identifier=article_name).values_list('author', flat=True).last()
     real_name_hehe = Author.objects.filter(pk=name).values_list('name', flat=True).last()
-    background_image = article_obj.imageURL
+    background_image = Article.objects.filter(link_identifier=article_name).values_list('background_image', flat=True).last()
 
     cat_pk = Article.objects.filter(link_identifier=article_name).values_list('category', flat=True).last()
     cat = Categories.objects.filter(pk=cat_pk).values_list('category', flat=True).last()

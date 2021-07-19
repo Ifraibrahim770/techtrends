@@ -77,7 +77,7 @@
                         <h2 class="section-heading"style="font-size: 1.7rem;">{{content.title|default_if_none:"" }}</h2>
                         <p>{{content.paragraph|default_if_none:"" }}</p>
                         {% if content.image1 %}
-                        <a href="#!"><img class="img-fluid" style="max-width: 50%; display: block; margin-left: auto; margin-right: auto;" src="{{content.imageURL}}" alt="..." /></a>
+                        <a href="#!"><img class="img-fluid" style="max-width: 70%; display: block; margin-left: auto; margin-right: auto;" src="{{content.image1}}" alt="..." /></a>
                         <span class="caption text-muted">{{content.image_caption|default_if_none:"" }}</span>
                          {% endif %}
                         {% endfor %}
