@@ -26,7 +26,8 @@ def single_post(request, article_name):
 
     name = Article.objects.filter(link_identifier=article_name).values_list('author', flat=True).last()
     real_name_hehe = Author.objects.filter(pk=name).values_list('name', flat=True).last()
-    background_image = Article.objects.filter(link_identifier=article_name).values_list('background_image', flat=True).last()
+    background_image = Article.objects.filter(link_identifier=article_name).values_list('background_image',
+                                                                                        flat=True).last()
 
     cat_pk = Article.objects.filter(link_identifier=article_name).values_list('category', flat=True).last()
     cat = Categories.objects.filter(pk=cat_pk).values_list('category', flat=True).last()
@@ -84,3 +85,21 @@ def load_more_posts(request):
 
 def privacy_policy(request):
     return render(request, 'store/PrivacyPolicy.html')
+
+
+def search(request):
+    if request.method == 'GET':
+        search_term = request.GET.get('search')
+        articles_list = Article.objects.filter(title__icontains=search_term)
+        print(search_term)
+        page = request.GET.get('page', 1)
+
+        paginator = Paginator(articles_list, 4)
+        try:
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            articles = paginator.page(1)
+        except EmptyPage:
+            articles = paginator.page(paginator.num_pages)
+
+    return render(request, 'store/more_posts.html', {"articles": articles})
