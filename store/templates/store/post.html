@@ -107,7 +107,7 @@
                     <!-- Divider-->
                     <hr class="my-4" />
                     {% endfor %}
-                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'morePosts' %}?type={{category}}">Related Posts →</a></div>
                 </div>
             </div>
         </div>

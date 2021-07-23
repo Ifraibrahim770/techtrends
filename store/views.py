@@ -55,6 +55,7 @@ def single_post(request, article_name):
                'background_image': background_image,
                'category': cat,
                'similar_articles': similar_articles,
+               'category_pk': cat_pk
 
                }
     return render(request, 'store/post.html', context)
@@ -69,7 +70,14 @@ def Contact(request):
 
 
 def load_more_posts(request):
-    articles_list = Article.objects.order_by('-times_clicked')
+    fruit = request.GET.get('type', 'aijawork bro')
+    print('--->', fruit)
+    if fruit == 'all':
+        articles_list = Article.objects.order_by('-times_clicked')
+    else:
+        category_obj = Categories.objects.get(category=fruit)
+        articles_list = Article.objects.filter(category=category_obj).order_by('-times_clicked')
+
     page = request.GET.get('page', 1)
 
     paginator = Paginator(articles_list, 4)
