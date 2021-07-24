@@ -90,7 +90,7 @@
                           <ul class="pagination justify-content-center post-subtitle">
                               {% if articles.has_previous %}
                                     <li class="page-item">
-                                      <a class="page-link" href="?page={{ articles.previous_page_number }}" tabindex="-1">Previous</a>
+                                      <a class="page-link" href="?page={{ articles.previous_page_number }}&type={{fruit}}" tabindex="-1">Previous</a>
                                     </li>
                               {% else %}
                                    <li class="page-item disabled">
@@ -103,13 +103,13 @@
 
                                         <li class="page-item active"><a class="page-link" href="#">{{ i }}</a></li>
                                     {% else %}
-                                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
+                                        <li class="page-item"><a class="page-link" href="?page={{ i }}&type={{fruit}}">{{i}}</a></li>
                                     {% endif %}
                               {% endfor %}
 
                               {% if articles.has_next %}
                                 <li class="page-item">
-                                  <a class="page-link" href="?page={{ articles.next_page_number }}">Next</a>
+                                  <a class="page-link" href="?page={{ articles.next_page_number }}&type={{fruit}}">Next</a>
                                 </li>
                               {% else %}
                                   <li class="page-item disabled">

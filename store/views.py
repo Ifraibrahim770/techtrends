@@ -11,7 +11,7 @@ from django.db.models import Q
 
 
 def Stalls(request):
-    articles = Article.objects.filter(verified=True)[:4]
+    articles = Article.objects.filter(verified=True).order_by('-id')[:4]
     return render(request, 'store/home.html', {"articles": articles})
 
 
@@ -73,10 +73,10 @@ def load_more_posts(request):
     fruit = request.GET.get('type', 'aijawork bro')
     print('--->', fruit)
     if fruit == 'all':
-        articles_list = Article.objects.order_by('-times_clicked')
+        articles_list = Article.objects.order_by('-id')
     else:
         category_obj = Categories.objects.get(category=fruit)
-        articles_list = Article.objects.filter(category=category_obj).order_by('-times_clicked')
+        articles_list = Article.objects.filter(category=category_obj).order_by('-id')
 
     page = request.GET.get('page', 1)
 
@@ -88,7 +88,7 @@ def load_more_posts(request):
     except EmptyPage:
         articles = paginator.page(paginator.num_pages)
 
-    return render(request, 'store/more_posts.html', {"articles": articles})
+    return render(request, 'store/more_posts.html', {"articles": articles, "fruit": fruit})
 
 
 def privacy_policy(request):
