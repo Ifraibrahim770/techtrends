@@ -72,7 +72,7 @@
                     <!-- Post preview-->
                      {% for article in articles %}
                     <div class="post-preview">
-                        <a href="{{'post/'|add:article.link_identifier}}">
+                        <a href="{% url 'single_post' %}?article={{article.link_identifier}}">
                             <h2 class="post-title">{{article.title}}</h2>
                             <h3 class="post-subtitle">{{article.sub_title}}</h3>
                         </a>

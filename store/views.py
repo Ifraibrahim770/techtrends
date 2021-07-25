@@ -15,7 +15,8 @@ def Stalls(request):
     return render(request, 'store/home.html', {"articles": articles})
 
 
-def single_post(request, article_name):
+def single_post(request):
+    article_name = request.GET.get('article', 'aijawork bro')
     print(article_name)
     article_obj = Article.objects.get(link_identifier=article_name)
     content = Content.objects.filter(article=article_obj).order_by('id')

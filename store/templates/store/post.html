@@ -94,7 +94,7 @@
                     <!-- Post preview-->
                     {% for similar_article in similar_articles %}
                     <div class="post-preview">
-                         <a href="{{similar_article.link_identifier}}">
+                         <a href="{% url 'single_post' %}?article={{similar_article.link_identifier}}">
                             <h2 class="post-title">{{similar_article.title}}</h2>
                             <h3 class="post-subtitle">{{similar_article.sub_title}}</h3>
                         </a>
