@@ -81,9 +81,10 @@
                         <span class="caption text-muted">{{content.image_caption|default_if_none:"" }}</span>
                          {% endif %}
                         {% endfor %}
-
+                        <div class="fb-comments" data-href="https://trendstech.herokuapp.com/post?article={{article_name}}" data-width="100%" data-numposts="5"></div>
                     </div>
                 </div>
+
             </div>
 
         </article>
@@ -120,12 +121,6 @@
 
                             </div>
                         </div>
-
-
-                    </div>
-
-
-
 
         <!-- Footer-->
         <footer class="border-top">
@@ -167,7 +162,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-    <script type="text/javascript" src="{% static 'js/scripts2.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/scripts2.js' %}"></script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/sw_KE/sdk.js#xfbml=1&version=v11.0&appId=625419248353366&autoLogAppEvents=1" nonce="eVaQdsO1"></script>
                 </main>
          </div>
     </body>
