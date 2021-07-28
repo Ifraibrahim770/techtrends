@@ -10824,7 +10824,7 @@ header.masthead .site-heading .h1 {
 /* On screens that are 600px wide or less, the background color is olive */
 @media screen and (max-width: 600px) {
   .image_size {
-    max-width: 110%;
+    max-width: 100%;
     max-height: 70%;
      display: block;
      margin-left: auto;
