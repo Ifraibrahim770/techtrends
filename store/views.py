@@ -63,7 +63,8 @@ def single_post(request):
 
 
 def About(request):
-    return render(request, 'store/about.html')
+    about_me = AboutMe.objects.all().order_by('id')
+    return render(request, 'store/about.html', {"about_mes": about_me})
 
 
 def Contact(request):

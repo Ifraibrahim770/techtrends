@@ -3,6 +3,7 @@
     <head>
         <script data-ad-client="ca-pub-7976590154700211" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         {% load static %}
+        {% load filter_tags %}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -80,6 +81,16 @@
                         <a href="#!"><img class="img-fluid image_size" src="{{content.image1}}" alt="..." /></a>
                         <span class="caption text-muted">{{content.image_caption|default_if_none:"" }}</span>
                          {% endif %}
+                        {% if content.list_items %}
+
+                        {% with content.list_items|split:"," as items %}
+                        <ul>
+                            {% for item in items %}
+                             <li>{{item}}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endwith %}
+                        {% endif %}
                         {% endfor %}
                         <div class="fb-comments" data-href="https://trendstech.herokuapp.com/post?article={{article_name}}" data-width="100%" data-numposts="5"></div>
                     </div>

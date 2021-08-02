@@ -49,15 +49,15 @@ class Content(models.Model):
     image1 = models.CharField(max_length=2000, blank=True, null=True)
     image_caption = models.CharField(max_length=2000, blank=True, null=True)
     article = models.ForeignKey(Article, on_delete=models.SET_NULL, null=True)
+    list_items = models.TextField(max_length=2000, null=True, blank=True)
 
     def __str__(self):
         return str(self.article)
 
 
-class PrivacyPolicy(models.Model):
+class AboutMe(models.Model):
     title = models.CharField(max_length=2000, blank=True, null=True)
     paragraph = models.TextField(max_length=2000, null=True, blank=True)
-    list_items = models.TextField(max_length=2000, null=True, blank=True)
 
     def __str__(self):
         return str(self.paragraph[0:15])

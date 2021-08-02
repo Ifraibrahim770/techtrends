@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$0f4=_aor-%hugor7+@kmy)5cc_6bxx&-%+=xd*b0-k$w+-t^!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -70,6 +70,10 @@ TEMPLATES = [
                 'social_django.context_processors.backends',  # <--
                 'social_django.context_processors.login_redirect',  # <--
             ],
+            'libraries': {
+                # make your file entry here.
+                'filter_tags': 'store.templatetags.filter',
+            }
         },
     },
 ]
@@ -174,10 +178,6 @@ ACCOUNT_EMAIL_REQUIRED = True
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.facebook.FacebookOAuth2',
-
     'django.contrib.auth.backends.ModelBackend',
 )
 
