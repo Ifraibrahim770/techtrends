@@ -94,8 +94,7 @@ def load_more_posts(request):
 
 
 def privacy_policy(request):
-    privacy = PrivacyPolicy.objects.all()
-    return render(request, 'store/PrivacyPolicy.html', {"privacy": privacy})
+    return render(request, 'store/PrivacyPolicy.html')
 
 
 def search(request):
