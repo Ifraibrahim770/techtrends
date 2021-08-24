@@ -10832,8 +10832,9 @@ header.masthead .site-heading .h1 {
   }
   p{
    font-size: 1.15rem;
-
-
+  }
+  li{
+   font-size: 1.15rem;
   }
 }
 
