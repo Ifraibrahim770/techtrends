@@ -56,7 +56,8 @@ def single_post(request):
                'background_image': background_image,
                'category': cat,
                'similar_articles': similar_articles,
-               'category_pk': cat_pk
+               'category_pk': cat_pk,
+               'identifier':article_name
 
                }
     return render(request, 'store/post.html', context)
