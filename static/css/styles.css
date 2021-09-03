@@ -10820,8 +10820,17 @@ header.masthead .site-heading .h1 {
   }
 
 
+.video_size {
+     width : 680px;
+     height :380px;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+  }
 
-/* On screens that are 600px wide or less, the background color is olive */
+
+
+/* On screens that are 600px wide or less, the background color is olive hehehe*/
 @media screen and (max-width: 600px) {
   .image_size {
     max-width: 100%;
@@ -10835,6 +10844,14 @@ header.masthead .site-heading .h1 {
   }
   li{
    font-size: 1.15rem;
+  }
+
+  .video_size {
+     width : 420px;
+     height :345px;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
   }
 }
 
