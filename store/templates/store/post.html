@@ -76,7 +76,7 @@
                     <div class="col-md-12 col-lg-10 col-xl-10">
                         {% for content in content %}
                         <h2 class="section-heading"style="font-size: 1.7rem;">{{content.title|default_if_none:"" }}</h2>
-                        <p>{{content.paragraph|default_if_none:"" }}</p>
+                        <p>{{content.paragraph|default_if_none:""|safe}}</p>
 
                         {% if content.list_items %}
 
