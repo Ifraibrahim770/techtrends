@@ -155,23 +155,14 @@ TEMPLATE_DIRS = [
     os.path.join(BASE_DIR, 'newstore/templates')
 ]
 
-EMAIL_HOST = '64.233.184.108'
-EMAIL_HOST_USER = 'dibaibrahim8@gmail.com'
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'dibaibrahim8@gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = 'context99'
+DEFAULT_FROM_EMAIL = 'ifraibrahim60@gmail.com'
 
-EMAIL_ACTIVE_FIELD = 'is_active'
-EMAIL_SERVER = 'smtp.gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ifraibrahim60@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
-EMAIL_ADDRESS = 'dibaibrahim8@gmail.com'
-EMAIL_PASSWORD = 'context99'  # os.environ['password_key'] suggested
-EMAIL_MAIL_SUBJECT = 'Confirm your email'
-EMAIL_MAIL_HTML = 'mail_body.html'
-EMAIL_MAIL_PLAIN = 'mail_body.txt'
-EMAIL_PAGE_TEMPLATE = 'confirm_template.html'
-EMAIL_PAGE_DOMAIN = 'http://mydomain.com/'
+EMAIL_USE_TLS = True
 
 ACCOUNT_EMAIL_REQUIRED = True
 

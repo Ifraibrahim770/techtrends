@@ -12,6 +12,7 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('search/post/<str:article_name>', views.single_post, name="single_post"),
     path('morePosts/post/<str:article_name>', views.single_post, name="single_post"),
+    path('send_message/', views.contact, name='send_message'),
 
 
 ]

@@ -1,10 +1,13 @@
 import socket
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from django.core.mail import BadHeaderError, send_mail, EmailMessage
+from django.conf import settings
+from django.contrib import messages
 
 
 # Create your views here.
@@ -57,7 +60,7 @@ def single_post(request):
                'category': cat,
                'similar_articles': similar_articles,
                'category_pk': cat_pk,
-               'identifier':article_name
+               'identifier': article_name
 
                }
     return render(request, 'store/post.html', context)
@@ -114,3 +117,30 @@ def search(request):
             articles = paginator.page(paginator.num_pages)
 
     return render(request, 'store/more_posts.html', {"articles": articles})
+
+
+def contact(request):
+    if request.method == 'GET':
+        name = request.GET.get('name')
+        email = request.GET.get('email')
+        phone = request.GET.get('phone')
+        message = request.GET.get('message')
+
+        if len(name) == 0:
+            messages.info(request, "Provide a name!", extra_tags="red_message")
+            return redirect('contact')
+        elif len(email) == 0:
+            messages.info(request, "Provide an email!", extra_tags="red_message")
+            return redirect('contact')
+        elif len(phone) == 0:
+            messages.info(request, "Provide a phone number!", extra_tags="red_message")
+            return redirect('contact')
+        elif len(message) == 0:
+            messages.info(request, "Provide a message!", extra_tags="red_message")
+            return redirect('contact')
+
+        send_mail(name, message,
+                  settings.DEFAULT_FROM_EMAIL, ["diba32@outlook.com"])
+        messages.info(request, "Message Sent Successfully", extra_tags="green_message")
+
+        return redirect('contact')
