@@ -139,8 +139,9 @@ def contact(request):
             messages.info(request, "Provide a message!", extra_tags="red_message")
             return redirect('contact')
 
-        send_mail(name, message,
-                  settings.DEFAULT_FROM_EMAIL, ["diba32@outlook.com"])
+        subject = "Message from " + str(name) + " email: " + str(email) + " phone:" + phone
+
+        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, ["diba32@outlook.com"])
         messages.info(request, "Message Sent Successfully", extra_tags="green_message")
 
         return redirect('contact')
