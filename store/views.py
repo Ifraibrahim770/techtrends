@@ -82,7 +82,7 @@ def load_more_posts(request):
         articles_list = Article.objects.filter(verified=True).order_by('-id')
     else:
         category_obj = Categories.objects.get(category=fruit)
-        articles_list = Article.objects.filter(category=category_obj,verified=True).order_by('-id')
+        articles_list = Article.objects.filter(category=category_obj, verified=True).order_by('-id')
 
     page = request.GET.get('page', 1)
 
@@ -139,9 +139,16 @@ def contact(request):
             messages.info(request, "Provide a message!", extra_tags="red_message")
             return redirect('contact')
 
-        subject = "Message from " + str(name) + " email: " + str(email) + " phone:" + phone
+        try:
+            contact_message = ContactMessages.object.create()
+            contact_message.name = str(name)
+            contact_message.email = str(email)
+            contact_message.phone = str(phone)
+            contact_message.message = str(message)
+            contact_message.save()
+            messages.info(request, "Message Sent Successfully", extra_tags="green_message")
+            return redirect('contact')
 
-        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, ["diba32@outlook.com"])
-        messages.info(request, "Message Sent Successfully", extra_tags="green_message")
-
-        return redirect('contact')
+        except:
+            messages.info(request, "Error Sending Message! Try again later", extra_tags="red_message")
+            return redirect('contact')
