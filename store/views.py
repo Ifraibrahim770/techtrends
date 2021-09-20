@@ -140,7 +140,7 @@ def contact(request):
             return redirect('contact')
 
         try:
-            contact_message = ContactMessages.object.create()
+            contact_message = ContactMessages.objects.create()
             contact_message.name = str(name)
             contact_message.email = str(email)
             contact_message.phone = str(phone)
