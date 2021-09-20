@@ -83,7 +83,7 @@
                         {% with content.list_items|split:"," as items %}
                         <ul>
                             {% for item in items %}
-                             <li>{{item}}</li>
+                             <li>{{item|safe}}</li>
                             {% endfor %}
                         </ul>
                         {% endwith %}
@@ -99,7 +99,7 @@
                          {% endif %}
 
                         {% endfor %}
-                        <div class="fb-comments" data-href="https://trendstech.herokuapp.com/post?article={{identifier}}" data-width="100%" data-numposts="5"></div>
+                        <div class="fb-comments" data-href="https://trendsforbreakfast.com/post?article={{identifier}}" data-width="100%" data-numposts="5"></div>
                     </div>
                 </div>
 

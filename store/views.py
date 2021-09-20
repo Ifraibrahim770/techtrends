@@ -79,10 +79,10 @@ def load_more_posts(request):
     fruit = request.GET.get('type', 'aijawork bro')
     print('--->', fruit)
     if fruit == 'all':
-        articles_list = Article.objects.order_by('-id')
+        articles_list = Article.objects.filter(verified=True).order_by('-id')
     else:
         category_obj = Categories.objects.get(category=fruit)
-        articles_list = Article.objects.filter(category=category_obj).order_by('-id')
+        articles_list = Article.objects.filter(category=category_obj,verified=True).order_by('-id')
 
     page = request.GET.get('page', 1)
 
