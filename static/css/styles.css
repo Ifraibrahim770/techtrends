@@ -10645,7 +10645,7 @@ blockquote {
   }
   #mainNav.is-visible {
     /* if the user changes the scrolling direction, we show the header */
-    transform: translate3d(0, 100%, 0);
+
   }
 }
 
@@ -10828,6 +10828,12 @@ header.masthead .site-heading .h1 {
      margin-right: auto;
   }
 
+.sticky2 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 
 
 /* On screens that are 600px wide or less, the background color is olive hehehe*/
@@ -10853,6 +10859,42 @@ header.masthead .site-heading .h1 {
      margin-left: auto;
      margin-right: auto;
   }
+
+  div.sticky_div {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+  .sticky-div {
+            background-color: green;
+            padding: 10px 0px;
+        }
+}
+
+
+
+@media screen and (max-width: 1100px) {
+  .ad_size {
+    display: none;
+  }
+
+   @media (min-width: 350px) {
+    .infeed {
+      height: 180px;
+    }
+ @media (min-width: 500px) {
+    .infeed {
+      height: 130px;
+    }
+  }
+ @media (min-width: 800px) {
+    .infeed {
+      height: 200px;
+    }
+  }
+
+
 }
 
 .fb-comments, .fb-comments span, .fb-comments iframe { width: 100% !important; }

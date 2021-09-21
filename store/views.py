@@ -50,6 +50,7 @@ def single_post(request):
     print('cat ', cat)
 
     print(subtitle)
+    ad = True
     # print('name', background_image)
     context = {'content': content,
                'article_name': title,
@@ -60,7 +61,8 @@ def single_post(request):
                'category': cat,
                'similar_articles': similar_articles,
                'category_pk': cat_pk,
-               'identifier': article_name
+               'identifier': article_name,
+               'ad' : ad
 
                }
     return render(request, 'store/post.html', context)
