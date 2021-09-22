@@ -8,6 +8,7 @@ from django.db.models import Q
 from django.core.mail import BadHeaderError, send_mail, EmailMessage
 from django.conf import settings
 from django.contrib import messages
+from random import shuffle
 
 
 # Create your views here.
@@ -39,7 +40,11 @@ def single_post(request):
     cat = Categories.objects.filter(pk=cat_pk).values_list('category', flat=True).last()
 
     # similar_articles = Article.objects.filter.exclude(link_identifier='article_name')(category=cat_pk).
-    similar_articles = Article.objects.filter(~Q(link_identifier=article_name), category=cat_pk)[:4]
+    similar_articles = Article.objects.filter(~Q(link_identifier=article_name), category=cat_pk)#[:4]
+    similar_article_list = list(similar_articles)
+    shuffle(similar_article_list)
+    final_list = similar_article_list[:4]
+
     print(similar_articles)
 
     times_clicked = Article.objects.filter(link_identifier=article_name).values_list('times_clicked', flat=True).last()
@@ -61,7 +66,7 @@ def single_post(request):
                'name': real_name_hehe,
                'background_image': background_image,
                'category': cat,
-               'similar_articles': similar_articles,
+               'similar_articles': final_list,
                'category_pk': cat_pk,
                'identifier': article_name,
                'ad': ad,
@@ -84,10 +89,15 @@ def load_more_posts(request):
     fruit = request.GET.get('type', 'aijawork bro')
     print('--->', fruit)
     if fruit == 'all':
-        articles_list = Article.objects.filter(verified=True).order_by('-id')
+
+        articles_list = list(Article.objects.filter(verified=True))
+        shuffle(articles_list)
+        articles_list = articles_list[:4]
     else:
         category_obj = Categories.objects.get(category=fruit)
-        articles_list = Article.objects.filter(category=category_obj, verified=True).order_by('-id')
+        articles_list = list(Article.objects.filter(category=category_obj, verified=True))
+        shuffle(articles_list)
+        articles_list = articles_list[:4]
 
     page = request.GET.get('page', 1)
 
