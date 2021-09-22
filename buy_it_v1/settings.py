@@ -19,6 +19,7 @@ cloudinary.config(
     cloud_name="djsb7vops",
     api_key="858746677888249",
     api_secret="IvWFBOXdymsbjUc4NBFX35YaPpM"
+
 )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -63,6 +64,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
 
 ROOT_URLCONF = 'buy_it_v1.urls'
 
