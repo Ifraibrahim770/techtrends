@@ -11,6 +11,15 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+cloudinary.config(
+    cloud_name="djsb7vops",
+    api_key="858746677888249",
+    api_secret="IvWFBOXdymsbjUc4NBFX35YaPpM"
+)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,6 +48,7 @@ INSTALLED_APPS = [
     'store.apps.StoreConfig',
     'allauth',
     'newstore',
+    'cloudinary'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -142,19 +152,19 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 STATICFILES_DIRS = [
 
     os.path.join(BASE_DIR, 'static')
 ]
 
+MEDIA_URL = '/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
 TEMPLATE_DIRS = [
     os.path.join(BASE_DIR, 'store/templates/store'),
     os.path.join(BASE_DIR, 'newstore/templates')
 ]
-
 
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST')
 

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser
+from cloudinary.models import CloudinaryField
 
 
 # Create your models here.
@@ -29,6 +30,8 @@ class Article(models.Model):
     times_clicked = models.IntegerField(default=0)
     verified = models.BooleanField(default=False, blank=False, null=True)
     background_image = models.CharField(max_length=2000, blank=True, null=True)
+    bg_image = CloudinaryField('image', blank=True, null=True)
+
 
     def __str__(self):
         return str(self.title)
@@ -47,6 +50,7 @@ class Content(models.Model):
     title = models.CharField(max_length=2000, blank=True, null=True)
     paragraph = models.TextField(max_length=2000, null=True, blank=True)
     image1 = models.CharField(max_length=2000, blank=True, null=True)
+    article_image = CloudinaryField('image', blank=True, null=True)
     image_caption = models.CharField(max_length=2000, blank=True, null=True)
     article = models.ForeignKey(Article, on_delete=models.SET_NULL, null=True)
     list_items = models.TextField(max_length=2000, null=True, blank=True)

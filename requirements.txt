@@ -62,3 +62,4 @@ win-inet-pton==1.1.0
 wincertstore==0.2
 wrapt==1.11.2
 gunicorn==20.0.4
+cloudinary

@@ -32,6 +32,8 @@ def single_post(request):
     real_name_hehe = Author.objects.filter(pk=name).values_list('name', flat=True).last()
     background_image = Article.objects.filter(link_identifier=article_name).values_list('background_image',
                                                                                         flat=True).last()
+    cloudinary_bg_image = Article.objects.filter(link_identifier=article_name).values_list('bg_image',
+                                                                                           flat=True).last()
 
     cat_pk = Article.objects.filter(link_identifier=article_name).values_list('category', flat=True).last()
     cat = Categories.objects.filter(pk=cat_pk).values_list('category', flat=True).last()
@@ -62,7 +64,8 @@ def single_post(request):
                'similar_articles': similar_articles,
                'category_pk': cat_pk,
                'identifier': article_name,
-               'ad' : ad
+               'ad': ad,
+               'cloudinary_bg_image': cloudinary_bg_image
 
                }
     return render(request, 'store/post.html', context)

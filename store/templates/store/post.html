@@ -40,7 +40,11 @@
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url({{background_image}}); max-height:490px;" >
+        {%if background_image is not None %}
+            <header class="masthead" style="background-image: url({{background_image}}); max-height:490px;" >
+        {% else %}
+               <header class="masthead" style="background-image: url({{cloudinary_bg_image.url}}); max-height:490px;" >
+        {% endif %}
             <div class="container position-relative px-4 px-lg-1">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-14">
@@ -57,6 +61,9 @@
                 </div>
             </div>
         </header>
+
+
+
         <!-- Post Content-->
          <div class="col-12">
                 <!-- Main Content -->
@@ -102,10 +109,13 @@
                         {% endwith %}
                         {% endif %}
                         {% if content.image1 %}
-                        <a href="{{content.image1}}"><img class="img-fluid image_size" src="{{content.image1}}" alt="..." /></a>
+                            <a href="{{content.image1}}"><img class="img-fluid image_size" src="{{content.image1}}" alt="..." /></a>
+                            <span class="caption text-muted">{{content.image_caption|default_if_none:"" }}</span>
+                        {% endif %}
+                        {% if content.article_image %}
+                        <a href="{{content.article_image.url}}"><img class="img-fluid image_size" src="{{content.article_image.url}}" alt="..." /></a>
                         <span class="caption text-muted">{{content.image_caption|default_if_none:"" }}</span>
                          {% endif %}
-
                         {% if content.youtube %}
                         <iframe class="video_size" src="https://www.youtube.com/embed/{{content.youtube}}">
                         </iframe>
