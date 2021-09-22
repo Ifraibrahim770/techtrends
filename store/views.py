@@ -89,15 +89,10 @@ def load_more_posts(request):
     fruit = request.GET.get('type', 'aijawork bro')
     print('--->', fruit)
     if fruit == 'all':
-
-        articles_list = list(Article.objects.filter(verified=True))
-        shuffle(articles_list)
-        articles_list = articles_list[:4]
+        articles_list = Article.objects.filter(verified=True)
     else:
         category_obj = Categories.objects.get(category=fruit)
-        articles_list = list(Article.objects.filter(category=category_obj, verified=True))
-        shuffle(articles_list)
-        articles_list = articles_list[:4]
+        articles_list = Article.objects.filter(category=category_obj, verified=True)
 
     page = request.GET.get('page', 1)
 
