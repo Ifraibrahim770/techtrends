@@ -15,12 +15,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-cloudinary.config(
-    cloud_name="djsb7vops",
-    api_key="858746677888249",
-    api_secret="IvWFBOXdymsbjUc4NBFX35YaPpM"
 
-)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -104,17 +99,6 @@ WSGI_APPLICATION = 'buy_it_v1.wsgi.application'
 #  }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dbhidvu24jslrk',
-        'HOST': 'ec2-174-129-225-160.compute-1.amazonaws.com',
-        'PORT': 5432,
-        'USER': 'feqwgasvdpdktq',
-        'PASSWORD': '3c516dcb7c25eb53b8164b50a6fa2f2d6a7bc7792be044ba2560ee995c883bb3'
-
-    }
-}
 
 # postgres://feqwgasvdpdktq:3c516dcb7c25eb53b8164b50a6fa2f2d6a7bc7792be044ba2560ee995c883bb3@ec2-174-129-225-160.compute-1.amazonaws.com:5432/dbhidvu24jslrk
 
